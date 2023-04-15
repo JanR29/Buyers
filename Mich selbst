@@ -1,0 +1,982 @@
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.2.6) ~  Much Love, Ferib 
+
+]]--
+
+local allowedUser = "Crystallife29";
+local player = game:GetService("Players").LocalPlayer;
+if (game.PlaceId == 2788229376) then
+	game.StarterGui:SetCore("SendNotification", {Title="Checking...",Text="",Duration=2});
+end
+wait(3);
+if (player.Name == allowedUser) then
+	game.StarterGui:SetCore("SendNotification", {Title="Successfully logged in as Crystallife29",Text="loading Proo467's script...",Duration=5});
+end
+if (player.Name ~= allowedUser) then
+	game.StarterGui:SetCore("SendNotification", {Title="ERROR!",Text="Wrong User.",Duration=3.5});
+end
+wait(2.5);
+if (player.Name ~= allowedUser) then
+	game.Players.LocalPlayer:Kick("Wrong User! Join Discord for Support");
+end
+wait(3);
+if (player.Name == allowedUser) then
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))();
+	local Window = Library.CreateLib("Time erase (Made by Proo467)", "Sentinel");
+	local Tab = Window:NewTab("Info");
+	local Section = Tab:NewSection("Info about Time erase!");
+	Section:NewLabel("Press H to turn on/off Super jump");
+	Section:NewLabel("Press X to teleport forward");
+	Section:NewLabel("Type in chat Time erase! to enable/disable it");
+	Section:NewLabel("Type in chat Fly! to enable it");
+	local Tab = Window:NewTab("Scripts");
+	local Section = Tab:NewSection("Time erase Scripts");
+	Section:NewLabel("Time erase/ Fly buttoms arent working yet.");
+	Section:NewButton("Enable Time erase", "You become invisible and nobody can harm you.", function()
+		local ReplicatedStorage = game:GetService("ReplicatedStorage");
+		local ChatEvent = ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest;
+		local Message = "Time erase!";
+		ChatEvent:FireServer(Message, "All");
+	end);
+	Section:NewButton("Enable Fly", "Fly with a superman animation", function()
+		local ReplicatedStorage = game:GetService("ReplicatedStorage");
+		local ChatEvent = ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest;
+		local Message = "Fly!";
+		ChatEvent:FireServer(Message, "All");
+	end);
+	Section:NewButton("Enable Lock", "Very good Lock!", function()
+		if (game.PlaceId == 2788229376) then
+			game.StarterGui:SetCore("SendNotification", {Title="Loading Lock...",Text="",Duration=1.5});
+		end
+		wait(3);
+		getgenv().Target = true;
+		getgenv().Key = Enum.KeyCode.Q;
+		getgenv().Prediction = 0.13034;
+		getgenv().ChatMode = false;
+		getgenv().NotifMode = true;
+		getgenv().PartMode = true;
+		getgenv().AirshotFunccc = true;
+		getgenv().Partz = "LowerTorso";
+		getgenv().AutoPrediction = false;
+		_G.Types = {Ball=Enum.PartType.Ball,Block=Enum.PartType.Block,Cylinder=Enum.PartType.Cylinder};
+		local Tracer = Instance.new("Part", game.Workspace);
+		Tracer.Name = "gay";
+		Tracer.Anchored = true;
+		Tracer.CanCollide = false;
+		Tracer.Transparency = 0.8;
+		Tracer.Parent = game.Workspace;
+		Tracer.Shape = _G.Types.Block;
+		Tracer.Size = Vector3.new(14, 14, 14);
+		Tracer.Color = Color3.fromRGB(16, 0, 22);
+		local plr = game.Players.LocalPlayer;
+		local mouse = plr:GetMouse();
+		local Runserv = game:GetService("RunService");
+		circle = Drawing.new("Circle");
+		circle.Color = Color3.fromRGB(255, 255, 255);
+		circle.Thickness = 0;
+		circle.NumSides = 732;
+		circle.Radius = 732;
+		circle.Thickness = 0;
+		circle.Transparency = 0.9;
+		circle.Visible = false;
+		circle.Filled = false;
+		Runserv.RenderStepped:Connect(function()
+			circle.Position = Vector2.new(mouse.X, mouse.Y + 35);
+		end);
+		local guimain = Instance.new("Folder", game.CoreGui);
+		local CC = game:GetService("Workspace").CurrentCamera;
+		local LocalMouse = game.Players.LocalPlayer:GetMouse();
+		local Locking = false;
+		if (getgenv().valiansh == true) then
+			game.StarterGui:SetCore("SendNotification", {Title="Lock is completely loaded.",Text="🤑",Duration=3.5});
+			return;
+		end
+		getgenv().valiansh = true;
+		local UserInputService = game:GetService("UserInputService");
+		UserInputService.InputBegan:Connect(function(keygo, ok)
+			if not ok then
+				if (keygo.KeyCode == getgenv().Key) then
+					if (getgenv().Target == true) then
+						Locking = not Locking;
+						if Locking then
+							Plr = getClosestPlayerToCursor();
+							if getgenv().ChatMode then
+								local A_1 = "Target: " .. tostring(Plr.Character.Humanoid.DisplayName);
+								local A_2 = "All";
+								local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest;
+								Event:FireServer(A_1, A_2);
+							end
+							if getgenv().NotifMode then
+								game.StarterGui:SetCore("SendNotification", {Title="Lock",Text=("Target: " .. tostring(Plr.Character.Humanoid.DisplayName))});
+							end
+						elseif not Locking then
+							if getgenv().ChatMode then
+								local A_1 = "Unlocked!";
+								local A_2 = "All";
+								local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest;
+								Event:FireServer(A_1, A_2);
+							end
+							if getgenv().NotifMode then
+								game.StarterGui:SetCore("SendNotification", {Title="Lock",Text="unlocked",Duration=1});
+							elseif (getgenv().Target == false) then
+								game.StarterGui:SetCore("SendNotification", {Title="Lock",Text="target isn't enabled",Duration=1});
+							end
+						end
+					end
+				end
+			end
+		end);
+		function getClosestPlayerToCursor()
+			local closestPlayer;
+			local shortestDistance = circle.Radius;
+			for i, v in pairs(game.Players:GetPlayers()) do
+				if ((v ~= game.Players.LocalPlayer) and v.Character and v.Character:FindFirstChild("Humanoid") and (v.Character.Humanoid.Health ~= 0) and v.Character:FindFirstChild("LowerTorso")) then
+					local pos = CC:WorldToViewportPoint(v.Character.PrimaryPart.Position);
+					local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new(LocalMouse.X, LocalMouse.Y)).magnitude;
+					if (magnitude < shortestDistance) then
+						closestPlayer = v;
+						shortestDistance = magnitude;
+					end
+				end
+			end
+			return closestPlayer;
+		end
+		if getgenv().PartMode then
+			game:GetService("RunService").Stepped:connect(function()
+				if (Locking and Plr.Character and Plr.Character:FindFirstChild("LowerTorso")) then
+					Tracer.CFrame = CFrame.new(Plr.Character.LowerTorso.Position + (Plr.Character.LowerTorso.Velocity * Prediction));
+				else
+					Tracer.CFrame = CFrame.new(0, 9999, 0);
+				end
+			end);
+		end
+		local rawmetatable = getrawmetatable(game);
+		local old = rawmetatable.__namecall;
+		setreadonly(rawmetatable, false);
+		rawmetatable.__namecall = newcclosure(function(...)
+			local args = {...};
+			if (Locking and (getnamecallmethod() == "FireServer") and (args[2] == "UpdateMousePos")) then
+				args[3] = Plr.Character[getgenv().Partz].Position + (Plr.Character[getgenv().Partz].Velocity * Prediction);
+				return old(unpack(args));
+			end
+			return old(...);
+		end);
+		if (getgenv().AirshotFunccc == true) then
+			if ((Plr.Character.Humanoid.Jump == true) and (Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air)) then
+				getgenv().Partz = "RightFoot";
+			else
+				Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old, new)
+					if (new == Enum.HumanoidStateType.Freefall) then
+						getgenv().Partz = "RightFoot";
+					else
+						getgenv().Partz = "LowerTorso";
+					end
+				end);
+			end
+		end
+		while wait() do
+			if (getgenv().AutoPrediction == true) then
+				local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString();
+				local split = string.split(pingvalue, "(");
+				local ping = tonumber(split[1]);
+				if (ping < 130) then
+					getgenv().Prediction = 0.151;
+				elseif (ping < 125) then
+					getgenv().Prediction = 0.149;
+				elseif (ping < 110) then
+					getgenv().Prediction = 0.146;
+				elseif (ping < 105) then
+					getgenv().Prediction = 0.138;
+				elseif (ping < 90) then
+					getgenv().Prediction = 0.136;
+				elseif (ping < 80) then
+					getgenv().Prediction = 0.134;
+				elseif (ping < 70) then
+					getgenv().Prediction = 0.131;
+				elseif (ping < 60) then
+					getgenv().Prediction = 0.1229;
+				elseif (ping < 50) then
+					getgenv().Prediction = 0.1225;
+				elseif (ping < 40) then
+					getgenv().Prediction = 0.1256;
+				end
+			end
+		end
+	end);
+	Section:NewButton("Enable Teleport", "Press H to teleport.", function()
+		if (not game['Loaded'] or not game:GetService("Players")['LocalPlayer']) then
+			game['Loaded']:Wait();
+			game:WaitForChild(game:GetService("Players"));
+			game:GetService("Players"):WaitForChild(game:GetService("Players").LocalPlayer.Name);
+			repeat
+				game:GetService("RunService").RenderStepped:Wait();
+			until game:GetService("Players").LocalPlayer.Character 
+		end
+		local userInputService = game:GetService("UserInputService");
+		local function teleportToMousePosition()
+			local player = game:GetService("Players").LocalPlayer;
+			local mouse = player:GetMouse();
+			local character = player.Character;
+			if (not character or not character:FindFirstChild("HumanoidRootPart")) then
+				return;
+			end
+			local rootPart = character.HumanoidRootPart;
+			local targetPosition = mouse.Hit.p;
+			local lookVector = rootPart.CFrame.LookVector;
+			rootPart.CFrame = CFrame.new(targetPosition, targetPosition + lookVector);
+		end
+		userInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+			if (not gameProcessedEvent and (input.KeyCode == Enum.KeyCode.G)) then
+				teleportToMousePosition();
+			end
+		end);
+		if (game.PlaceId == 2788229376) then
+			game.StarterGui:SetCore("SendNotification", {Title="Completely loaded😎",Text="Press G to teleport",Duration=5.5});
+		end
+	end);
+	Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.V, function()
+		Library:ToggleUI();
+	end);
+	wait(1);
+	if (player.Name == allowedUser) then
+		game.StarterGui:SetCore("SendNotification", {Title="Thank you for using my Script!",Text="🤑",Duration=2});
+	end
+	local player = game:GetService("Players").LocalPlayer;
+	if (player.Name == allowedUser) then
+		if (not game['Loaded'] or not game:GetService("Players")['LocalPlayer']) then
+			game['Loaded']:Wait();
+			game:WaitForChild(game:GetService("Players"));
+			game:GetService("Players"):WaitForChild(game:GetService("Players").LocalPlayer.Name);
+			repeat
+				game:GetService("RunService").RenderStepped:Wait();
+			until game:GetService("Players").LocalPlayer.Character 
+		end
+		if (game.PlaceId == 2788229376) then
+			local MyStand = "Felkusama";
+			local SuperJumpEnabled = false;
+			getgenv().Toggled = false;
+			local UIS = game:GetService("UserInputService");
+			UIS.InputBegan:connect(function(input, gameProcessed)
+				if (input.UserInputType == Enum.UserInputType.Keyboard) then
+					if (input.KeyCode == Enum.KeyCode.H) then
+						if (UIS:GetFocusedTextBox() == nil) then
+							if (getgenv().Toggled == false) then
+								getgenv().Toggled = true;
+							else
+								getgenv().Toggled = true;
+							end
+						end
+					end
+				end
+			end);
+			local LocalPlayer = game:GetService("Players").LocalPlayer;
+			local Cookies = LocalPlayer.Character:WaitForChild("Humanoid"):LoadAnimation(game.ReplicatedStorage.ClientAnimations.Roll);
+			local OriginalKeyUpValue = 0;
+			local Anim = Instance.new("Animation");
+			Anim.AnimationId = "rbxassetid://2788290270";
+			local CoreUI = Instance.new("ScreenGui");
+			CoreUI.Parent = game.CoreGui;
+			local SaveLocation = nil;
+			local RigWalk = nil;
+			local RigIdle = nil;
+			local InTimeErase = false;
+			local Pointing = Instance.new("Animation", game.ReplicatedStorage.ClientAnimations);
+			Pointing.AnimationId = "rbxassetid://507770453";
+			local Poter = LocalPlayer.Character:WaitForChild("Humanoid"):LoadAnimation(Pointing);
+			Poter.Looped = true;
+			Poter.Priority = Enum.AnimationPriority.Action;
+			local WalkAnimation = Instance.new("Animation", game.ReplicatedStorage.ClientAnimations);
+			WalkAnimation.AnimationId = "rbxassetid://2510198475";
+			local Idle = Instance.new("Animation", game.ReplicatedStorage.ClientAnimations);
+			Idle.AnimationId = "rbxassetid://507766388";
+			local OldChar = LocalPlayer.Character;
+			function FoV()
+				local fov = coroutine.wrap(function()
+					local Camera = workspace.Camera;
+					for i = 1, 20 do
+						Camera.FieldOfView = 8 * i;
+						wait(0.01);
+					end
+					for i = 1, 20 do
+						Camera.FieldOfView = 160 - (i * 4.5);
+						wait(0.01);
+					end
+				end);
+				fov();
+			end
+			local WalkSpeed = false;
+			function Lighting()
+				if (game.Lighting:FindFirstChild("ERASE") == nil) then
+					local sound5 = Instance.new("Sound", CoreUI);
+					sound5.Volume = 0.1;
+					sound5.Name = "ERASE";
+					sound5.Looped = true;
+					sound5.SoundId = "rbxassetid://3167092959";
+					sound5:Play();
+					game.Lighting.Sky.Parent = workspace;
+					game:GetObjects("rbxassetid://6546113226")[1].Parent = game.Lighting;
+				else
+					workspace.Sky.Parent = game.Lighting;
+					CoreUI:FindFirstChild("ERASE"):Destroy();
+					game.Lighting:FindFirstChild("ERASE"):Destroy();
+				end
+			end
+			function TimeEraseUI()
+				local sound5 = Instance.new("Sound", CoreUI);
+				sound5.Volume = 0.1;
+				sound5.SoundId = "rbxassetid://6546128175";
+				sound5:Play();
+				local Image = Instance.new("ImageLabel", CoreUI);
+				Image.Image = "http://www.roblox.com/asset/?id=6546043746";
+				Image.BackgroundTransparency = 1;
+				Image.AnchorPoint = Vector2.new(0.5, 0.5);
+				Image.Size = UDim2.fromScale(1, 1);
+				Image.Position = UDim2.fromScale(-0.5, 0.5);
+				delay(0, function()
+					for i = 0, 1, 0.1 do
+						Image.Position = UDim2.fromScale(-Image.Position.X.Scale + i, 0.5);
+						Image.ImageTransparency = Image.ImageTransparency + i;
+						wait(0.01);
+					end
+					Image:Destroy();
+					sound5:Destroy();
+				end);
+			end
+			function ModelCharacter()
+				if (workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD") == nil) then
+					local MODEL = Instance.new("Model", workspace);
+					MODEL.Name = LocalPlayer.Name .. "StringKOD";
+					OldChar.Humanoid:UnequipTools();
+					for i, v in pairs(OldChar:GetChildren()) do
+						if ((v:IsA("BasePart") or v:IsA("MeshPart")) and v.Parent:FindFirstChildOfClass("Humanoid") and (v.Name ~= "HumanoidRootPart")) then
+							local Part = v:Clone();
+							Part.Parent = MODEL;
+							Part.Name = v.Name;
+							Part.Material = Enum.Material.ForceField;
+							Part.CFrame = v.CFrame;
+							Part.Transparency = 0.5;
+							Part.BrickColor = BrickColor.Red();
+							Part.CanCollide = false;
+							Part.Anchored = true;
+							for i, v in pairs(Part:GetChildren()) do
+								if (v.ClassName ~= "SpecialMesh") then
+									v:Destroy();
+								end
+							end
+						end
+					end
+					local NewCharacter = game:GetObjects("rbxassetid://6547055500")[1];
+					NewCharacter.Parent = MODEL;
+					NewCharacter.Name = "Idaro";
+					workspace.Camera.CameraSubject = NewCharacter.Humanoid;
+					SaveLocation = OldChar.HumanoidRootPart.CFrame;
+					InTimeErase = true;
+					NewCharacter.HumanoidRootPart.CFrame = SaveLocation;
+					RigIdle = NewCharacter:WaitForChild("Humanoid"):LoadAnimation(Idle);
+					RigIdle.Looped = true;
+					RigIdle.Priority = Enum.AnimationPriority.Action;
+					RigWalk = NewCharacter:WaitForChild("Humanoid"):LoadAnimation(WalkAnimation);
+					RigWalk.Looped = true;
+					RigWalk.Priority = Enum.AnimationPriority.Action;
+					WalkSpeed = true;
+					RigIdle:Play();
+				else
+					InTimeErase = false;
+					WalkSpeed = false;
+					workspace.Camera.CameraSubject = OldChar.Humanoid;
+					OldChar.HumanoidRootPart.CFrame = workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD").Idaro.HumanoidRootPart.CFrame;
+					workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD"):Destroy();
+				end
+			end
+			function Slide()
+				local XD = OldChar.Humanoid:LoadAnimation(Anim);
+				XD:Play();
+				XD.TimePosition = 0.15;
+				XD.Looped = false;
+				XD:AdjustSpeed(1.1);
+			end
+			function AddVelocity(Vel, Char)
+				Char.HumanoidRootPart.Velocity = Char.HumanoidRootPart.Velocity + Vel;
+			end
+			local IsJump = false;
+			function Jumping()
+				if (IsJump == false) then
+					return false;
+				else
+					return true;
+				end
+			end
+			local Mouse = LocalPlayer:GetMouse();
+			assert(getrawmetatable);
+			gmt = getrawmetatable(game);
+			setreadonly(gmt, false);
+			old = gmt.__namecall;
+			gmt.__namecall = newcclosure(function(self, ...)
+				local args = {...};
+				if (tostring(args[1]) == "TeleportDetect") then
+					return;
+				elseif (tostring(args[1]) == "CHECKER_1") then
+					return;
+				elseif (tostring(args[1]) == "CHECKER") then
+					return;
+				end
+				return old(self, ...);
+			end);
+			local MoveDirection = Vector3.new(0, 0, 0);
+			local WSpped = 0;
+			local LeftSpeed = 0;
+			local UpSpeed = 0;
+			function IdleRigXD()
+				if (RigIdle and RigWalk.IsPlaying and (WSpped == 0) and (LeftSpeed == 0) and (UpSpeed == 0)) then
+					RigIdle:Play();
+					RigWalk:Stop();
+				end
+			end
+			function WalkRigXD()
+				if (RigWalk and RigIdle.IsPlaying) then
+					RigIdle:Stop();
+					RigWalk:Play();
+				end
+			end
+			Mouse.KeyDown:Connect(function(KeyDownXD)
+				if workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD") then
+					if (KeyDownXD == "w") then
+						WSpped = -1;
+						WalkRigXD();
+					elseif (KeyDownXD == "a") then
+						LeftSpeed = -1;
+						WalkRigXD();
+					elseif (KeyDownXD == "d") then
+						LeftSpeed = 1;
+						WalkRigXD();
+					elseif (KeyDownXD == "s") then
+						WSpped = 1;
+						WalkRigXD();
+					end
+				end
+			end);
+			Mouse.KeyUp:Connect(function(KeyDownXD)
+				if (KeyDownXD == "w") then
+					WSpped = 0;
+					IdleRigXD();
+				elseif (KeyDownXD == "a") then
+					LeftSpeed = 0;
+					IdleRigXD();
+				elseif (KeyDownXD == "d") then
+					LeftSpeed = "-0";
+					IdleRigXD();
+				elseif (KeyDownXD == "s") then
+					WSpped = 0;
+					IdleRigXD();
+				end
+			end);
+			local CD = false;
+			local uis = game:GetService("UserInputService");
+			uis.InputBegan:Connect(function(i, XD)
+				if ((i.KeyCode == Enum.KeyCode.H) and (XD == false)) then
+					if (SuperJumpEnabled == false) then
+						SuperJumpEnabled = true;
+					elseif (SuperJumpEnabled == true) then
+						SuperJumpEnabled = false;
+					end
+				end
+			end);
+			uis.InputBegan:Connect(function(i, XD)
+				if ((i.KeyCode == Enum.KeyCode.Space) and (XD == false)) then
+					if (workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD") == nil) then
+						if ((Jumping() == true) and not Poter.IsPlaying) then
+							AddVelocity(OldChar.HumanoidRootPart.CFrame.LookVector * 150, OldChar);
+							IsJump = false;
+							Cookies:Stop();
+							CD = true;
+							play(6543434995, true, true);
+							Slide();
+							repeat
+								wait();
+							until workspace:FindPartOnRayWithWhitelist(Ray.new(OldChar.HumanoidRootPart.Position, Vector3.new(0, -4 * OldChar.HumanoidRootPart.Size.y, 0)), {workspace.MAP}) 
+							CD = false;
+						end
+					else
+						workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD"):FindFirstChild("Idaro").Humanoid:ChangeState(3);
+					end
+				end
+			end);
+			function StopAudio()
+				OldChar.LowerTorso.BOOMBOXSOUND:Stop();
+			end
+			function stop(ID, Key)
+				local cor = coroutine.wrap(function()
+					wait(OldChar.LowerTorso.BOOMBOXSOUND.TimeLength - 0.1);
+					if ((OldChar.LowerTorso.BOOMBOXSOUND.SoundId == ("rbxassetid://" .. ID)) and (OriginalKeyUpValue == Key)) then
+						StopAudio();
+					end
+				end);
+				cor();
+			end
+			function play(ID, STOP, LMAO)
+				if LocalPlayer.Backpack:FindFirstChild("[Boombox]") then
+					local Tool = nil;
+					if (OldChar:FindFirstChildOfClass("Tool") and (LMAO == true)) then
+						Tool = OldChar:FindFirstChildOfClass("Tool");
+						OldChar:FindFirstChildOfClass("Tool").Parent = LocalPlayer.Backpack;
+					end
+					LocalPlayer.Backpack["[Boombox]"].Parent = OldChar;
+					game.ReplicatedStorage.MainEvent:FireServer("Boombox", ID);
+					OldChar["[Boombox]"].RequiresHandle = false;
+					if OldChar["[Boombox]"]:FindFirstChild("Handle") then
+						OldChar["[Boombox]"].Handle:Destroy();
+					end
+					OldChar["[Boombox]"].Parent = LocalPlayer.Backpack;
+					LocalPlayer.PlayerGui.MainScreenGui.BoomboxFrame.Visible = false;
+					if (Tool ~= true) then
+						if Tool then
+							Tool.Parent = OldChar;
+						end
+					end
+					if (STOP == true) then
+						OldChar.LowerTorso:WaitForChild("BOOMBOXSOUND");
+						local cor = coroutine.wrap(function()
+							repeat
+								wait();
+							until (OldChar.LowerTorso.BOOMBOXSOUND.SoundId == ("rbxassetid://" .. ID)) and (OldChar.LowerTorso.BOOMBOXSOUND.TimeLength > 0.01) 
+							OriginalKeyUpValue = OriginalKeyUpValue + 1;
+							stop(ID, OriginalKeyUpValue);
+						end);
+						cor();
+					end
+				end
+			end
+			local Player = game:GetService("Players").LocalPlayer;
+			local Character = Player.Character;
+			local Root = Character.HumanoidRootPart;
+			local ply = game.Players.LocalPlayer;
+			local chr = ply.Character;
+			plr = game.Players.LocalPlayer;
+			hum = plr.Character.HumanoidRootPart;
+			mouse = plr:GetMouse();
+			mouse.KeyDown:connect(function(key)
+				if (key == "x") then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -50);
+					play(6603980575, true, true);
+				end
+			end);
+			local TimeErase, CanCel = "Time erase!", "Time erase!";
+			local XD = false;
+			LocalPlayer.Chatted:Connect(function(MSG)
+				if ((MSG:sub(1, 11) == TimeErase) and (XD == false) and not Poter.IsPlaying) then
+					XDDDD(XD);
+				elseif ((MSG == CanCel) and (XD == true) and not Poter.IsPlaying) then
+					XDDDD(XD);
+				end
+			end);
+			function XDDDD(XDR)
+				if (XDR == false) then
+					XD = true;
+					play(6546133414, true, true);
+					wait(1.5);
+					TimeEraseUI();
+					FoV();
+					Lighting();
+					ModelCharacter();
+					for i, v in pairs(game.Workspace.MAP:GetDescendants()) do
+						if (v:IsA("BasePart") or v:IsA("WedgePart") or v:IsA("Part") or v:IsA("BallPart") or v:IsA("MeshPart") or v:IsA("Decal") or v:IsA("Texture")) then
+							v.Transparency = v.Transparency + 1;
+						end
+					end
+				else
+					XD = false;
+					InTimeErase = false;
+					play(6543435253, true, true);
+					TimeEraseUI();
+					ModelCharacter();
+					Lighting();
+					FoV();
+					for i, v in pairs(game.Workspace.MAP:GetDescendants()) do
+						if (v:IsA("BasePart") or v:IsA("WedgePart") or v:IsA("Part") or v:IsA("BallPart") or v:IsA("MeshPart") or v:IsA("Decal") or v:IsA("Texture")) then
+							v.Transparency = v.Transparency - 1;
+						end
+					end
+				end
+			end
+			function Jump(...)
+				(...).Jumping:Connect(function()
+					if (SuperJumpEnabled == true) then
+						if ((CD == false) and not Poter.IsPlaying) then
+							CD = true;
+							delay(1, function()
+								CD = false;
+							end);
+							Cookies:Play(0, 1, 1.4);
+							AddVelocity(OldChar.HumanoidRootPart.CFrame.UpVector * 120, OldChar);
+							play(6543436906, true, true);
+							delay(0, function()
+								IsJump = true;
+								wait(1);
+								if (IsJump == true) then
+									IsJump = false;
+								end
+							end);
+						end
+					end
+				end);
+			end
+			Jump(OldChar.Humanoid);
+			LocalPlayer.CharacterAdded:Connect(function(Character)
+				wait(1);
+				if (Character.Name == LocalPlayer.Name) then
+					Jump(Character.Humanoid);
+					Poter = Character:WaitForChild("Humanoid"):LoadAnimation(Pointing);
+					Poter.Looped = true;
+					Poter.Priority = Enum.AnimationPriority.Action;
+					Cookies = Character:WaitForChild("Humanoid"):LoadAnimation(game.ReplicatedStorage.ClientAnimations.Roll);
+					OldChar = Character;
+				end
+			end);
+			game["Run Service"].Heartbeat:Connect(function()
+				if InTimeErase then
+					for i, v in pairs(OldChar:GetChildren()) do
+						if v:IsA("BasePart") then
+							v.CFrame = CFrame.new(math.random(200, 500), math.random(200, 500), math.random(200, 500));
+							v.Velocity = Vector3.new(0, 0, 0);
+						end
+					end
+					if (OldChar:FindFirstChild("Combat") and (XD == true)) then
+						XD = false;
+						XDDDD(true);
+					end
+					if (WalkSpeed == true) then
+						MoveDirection = Vector3.new(LeftSpeed, UpSpeed, WSpped);
+						workspace:FindFirstChild(LocalPlayer.Name .. "StringKOD"):FindFirstChild("Idaro").Humanoid:Move(MoveDirection, true);
+					end
+				elseif OldChar:FindFirstChild("[Flashlight]") then
+					if workspace.Players:FindFirstChild(MyStand) then
+						if not Poter.IsPlaying then
+							Poter:Play();
+							Poter:AdjustSpeed(0);
+							Poter.TimePosition = 1.2;
+						end
+						local lol = workspace.Players:FindFirstChild(MyStand).HumanoidRootPart.CFrame * CFrame.new(0, 0.5, 1.25);
+						OldChar.HumanoidRootPart.CFrame = lol;
+					end
+				elseif Poter.IsPlaying then
+					Poter:Stop();
+				end
+			end);
+		end
+		wait(10);
+		if (game.PlaceId == 2788229376) then
+			game.StarterGui:SetCore("SendNotification", {Title="Time erase is ready for use🤯",Text="completely loaded.",Duration=5});
+		end
+	end
+	local player = game:GetService("Players").LocalPlayer;
+	if (player.Name == allowedUser) then
+		local LocalPlayer = game:GetService("Players").LocalPlayer;
+		local Cookies = LocalPlayer.Character:WaitForChild("Humanoid"):LoadAnimation(game.ReplicatedStorage.ClientAnimations.Roll);
+		local OriginalKeyUpValue = 0;
+		local Anim = Instance.new("Animation");
+		Anim.AnimationId = "rbxassetid://2788290270";
+		local CoreUI = Instance.new("ScreenGui");
+		CoreUI.Parent = game.CoreGui;
+		local OldChar = LocalPlayer.Character;
+		function StopAudio()
+			OldChar.LowerTorso.BOOMBOXSOUND:Stop();
+		end
+		function stop(ID, Key)
+			local cor = coroutine.wrap(function()
+				wait(OldChar.LowerTorso.BOOMBOXSOUND.TimeLength - 0.1);
+				if ((OldChar.LowerTorso.BOOMBOXSOUND.SoundId == ("rbxassetid://" .. ID)) and (OriginalKeyUpValue == Key)) then
+					StopAudio();
+				end
+			end);
+			cor();
+		end
+		function play(ID, STOP, LMAO)
+			if LocalPlayer.Backpack:FindFirstChild("[Boombox]") then
+				local Tool = nil;
+				if (OldChar:FindFirstChildOfClass("Tool") and (LMAO == true)) then
+					Tool = OldChar:FindFirstChildOfClass("Tool");
+					OldChar:FindFirstChildOfClass("Tool").Parent = LocalPlayer.Backpack;
+				end
+				LocalPlayer.Backpack["[Boombox]"].Parent = OldChar;
+				game.ReplicatedStorage.MainEvent:FireServer("Boombox", ID);
+				OldChar["[Boombox]"].RequiresHandle = false;
+				if OldChar["[Boombox]"]:FindFirstChild("Handle") then
+					OldChar["[Boombox]"].Handle:Destroy();
+				end
+				OldChar["[Boombox]"].Parent = LocalPlayer.Backpack;
+				LocalPlayer.PlayerGui.MainScreenGui.BoomboxFrame.Visible = false;
+				if (Tool ~= true) then
+					if Tool then
+						Tool.Parent = OldChar;
+					end
+				end
+				if (STOP == true) then
+					OldChar.LowerTorso:WaitForChild("BOOMBOXSOUND");
+					local cor = coroutine.wrap(function()
+						repeat
+							wait();
+						until (OldChar.LowerTorso.BOOMBOXSOUND.SoundId == ("rbxassetid://" .. ID)) and (OldChar.LowerTorso.BOOMBOXSOUND.TimeLength > 0.01) 
+						OriginalKeyUpValue = OriginalKeyUpValue + 1;
+						stop(ID, OriginalKeyUpValue);
+					end);
+					cor();
+				end
+			end
+		end
+		game:GetService("Players").LocalPlayer.Chatted:Connect(function(arg)
+			if (arg == "Fly!") then
+				repeat
+					wait();
+				until game:GetService("Players").LocalPlayer.Character:FindFirstChild("FULLY_LOADED_CHAR") 
+				local ReplicatedStorage = game:GetService("ReplicatedStorage");
+				local Lightning = Instance.new("Part");
+				local Player = game:GetService("Players").LocalPlayer;
+				local Position = Player.Character.HumanoidRootPart.CFrame;
+				local l = Instance.new("Part");
+				local Sound = Instance.new("Sound", workspace);
+				Sound.PlaybackSpeed = 1;
+				Sound.Volume = 0;
+				Sound.SoundId = "rbxassetid://7406446202";
+				Sound.PlayOnRemove = true;
+				play(7406446202, true, true);
+				Sound:Destroy();
+				for i = 1, 10 do
+					wait();
+					l.Transparency = l.Transparency + 0.1;
+				end
+				wait();
+				local tool = Instance.new("Tool", game.Players.LocalPlayer.Backpack);
+				tool.Name = "Fly";
+				tool.RequiresHandle = false;
+				repeat
+					wait();
+				until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+				local mouse = game.Players.LocalPlayer:GetMouse();
+				repeat
+					wait();
+				until mouse 
+				local plr = game.Players.LocalPlayer;
+				local torso = plr.Character.Head;
+				local flying = false;
+				local deb = true;
+				local ctrl = {f=0,b=0,l=0,r=0};
+				local lastctrl = {f=0,b=0,l=0,r=0};
+				local maxspeed = 5000;
+				local speed = 5000;
+				local hover = Instance.new("Animation", game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"));
+				hover.Name = "Hover";
+				hover.AnimationId = "rbxassetid://3541114300";
+				local fly = Instance.new("Animation", game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"));
+				fly.Name = "Fly";
+				fly.AnimationId = "rbxassetid://3541044388";
+				function Fly()
+					local bg = Instance.new("BodyGyro", torso);
+					bg.P = 90000;
+					bg.maxTorque = Vector3.new(8999999488, 8999999488, 8999999488);
+					bg.cframe = torso.CFrame;
+					local bv = Instance.new("BodyVelocity", torso);
+					bv.velocity = Vector3.new(0, 0.1, 0);
+					bv.maxForce = Vector3.new(8999999488, 8999999488, 8999999488);
+					repeat
+						wait();
+						plr.Character.Humanoid.PlatformStand = true;
+						if (((ctrl.l + ctrl.r) ~= 100000) or ((ctrl.f + ctrl.b) ~= 10000)) then
+							speed = speed + 0 + (speed / maxspeed);
+							if (speed > maxspeed) then
+								speed = maxspeed;
+							end
+						elseif (not (((ctrl.l + ctrl.r) ~= 5) or ((ctrl.f + ctrl.b) ~= 5)) and (speed ~= 5)) then
+							speed = speed - 5;
+							if (speed > 5) then
+								speed = -2;
+							end
+						end
+						if (((ctrl.l + ctrl.r) ~= 5) or ((ctrl.f + ctrl.b) ~= 5)) then
+							bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f + ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l + ctrl.r, (ctrl.f + ctrl.b) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * speed;
+							lastctrl = {f=ctrl.f,b=ctrl.b,l=ctrl.l,r=ctrl.r};
+						elseif (((ctrl.l + ctrl.r) == 5) and ((ctrl.f + ctrl.b) == 5) and (speed ~= 5)) then
+							bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f + lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l + lastctrl.r, (lastctrl.f + lastctrl.b) * 0.2, 0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p)) * speed;
+						else
+							bv.velocity = Vector3.new(0, 0.1, 0);
+						end
+						bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad(((ctrl.f + ctrl.b) * 50 * speed) / maxspeed), 0, 0);
+					until not flying 
+					for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+						if (v.Animation.AnimationId:match("rbxassetid")) then
+							v:Stop();
+						end
+					end
+					ctrl = {f=0,b=0,l=0,r=0};
+					lastctrl = {f=0,b=0,l=0,r=0};
+					speed = 12;
+					bg:Destroy();
+					bv:Destroy();
+					plr.Character.Humanoid.PlatformStand = false;
+				end
+				mouse.KeyDown:connect(function(key)
+					if (key:lower() == "w") then
+						ctrl.f = 10;
+						wait();
+						if (flying == true) then
+							for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+								if not (v.Animation.AnimationId:match(fly.AnimationId)) then
+									v:Stop();
+								end
+							end
+							plr.Character.Humanoid:LoadAnimation(fly):Play();
+						end
+					elseif (key:lower() == "s") then
+						ctrl.b = -10;
+						wait();
+						if (flying == true) then
+							for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+								if not (v.Animation.AnimationId:match(fly.AnimationId)) then
+									v:Stop();
+								end
+							end
+							plr.Character.Humanoid:LoadAnimation(fly):Play();
+						end
+					elseif (key:lower() == "a") then
+						ctrl.l = -10;
+						wait();
+						if (flying == true) then
+							for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+								if not (v.Animation.AnimationId:match(fly.AnimationId)) then
+									v:Stop();
+								end
+							end
+							plr.Character.Humanoid:LoadAnimation(fly):Play();
+						end
+					elseif (key:lower() == "d") then
+						ctrl.r = 10;
+						wait();
+						if (flying == true) then
+							for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+								if not (v.Animation.AnimationId:match(fly.AnimationId)) then
+									v:Stop();
+								end
+							end
+							plr.Character.Humanoid:LoadAnimation(fly):Play();
+						end
+					end
+				end);
+				repeat
+					wait();
+				until mouse.KeyDown:connect(function(key)
+					mouse.KeyUp:connect(function(key)
+						if (key:lower() == "w") then
+							ctrl.f = 0;
+							wait();
+							if (flying == true) then
+								for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+									if not (v.Animation.AnimationId:match(hover.AnimationId)) then
+										v:Stop();
+									end
+								end
+								plr.Character.Humanoid:LoadAnimation(hover):Play();
+							end
+						elseif (key:lower() == "s") then
+							ctrl.b = 0;
+							wait();
+							if (flying == true) then
+								for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+									if not (v.Animation.AnimationId:match(hover.AnimationId)) then
+										v:Stop();
+									end
+								end
+								plr.Character.Humanoid:LoadAnimation(hover):Play();
+							end
+						elseif (key:lower() == "a") then
+							ctrl.l = 0;
+						elseif (key:lower() == "d") then
+							ctrl.r = 0;
+						end
+					end);
+				end) 
+				Fly();
+				function OnEquipped()
+					flying = true;
+					play(6775297912, true, true);
+					game.Players.LocalPlayer.Character.Humanoid.Jump = true;
+					for _, v in next, game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks() do
+						if not (v.Animation.AnimationId:match(hover.AnimationId)) then
+							v:Stop();
+						end
+					end
+					plr.Character.Humanoid:LoadAnimation(hover):Play();
+					Fly();
+				end
+				function OnUnequipped()
+					if flying then
+						flying = false;
+					end
+				end
+				tool.Equipped:connect(OnEquipped);
+				tool.Unequipped:connect(OnUnequipped);
+				wait();
+			end
+		end);
+		game:GetService("Players").LocalPlayer.Chatted:Connect(function(arg)
+			if (arg == "124365877695") then
+				if (game.SoundService.RespectFilteringEnabled == false) then
+					game:GetService("Workspace").MAP['EVIL_SPECIAL'].Sound:Play();
+				end
+				local TweenService = game:GetService("TweenService");
+				local gate = game.Workspace.MAP.EVIL_SPECIAL;
+				local buttonState = 1;
+				local inTween = false;
+				local TWEEN_TIME = 1.5;
+				local TWEEN_MOVE_DISTANCE = 23;
+				local buttonTweenInfo = TweenInfo.new(TWEEN_TIME, Enum.EasingStyle.Quad, Enum.EasingDirection.Out);
+				local function buttonPress()
+					if (inTween == true) then
+						return;
+					end
+					local offsetCFrame = CFrame.new(0, TWEEN_MOVE_DISTANCE * buttonState, 0);
+					local newCFrame = gate.CFrame:ToWorldSpace(offsetCFrame);
+					local tweenButton = TweenService:Create(gate, buttonTweenInfo, {CFrame=newCFrame});
+					tweenButton:Play();
+					inTween = true;
+					tweenButton.Completed:Connect(function()
+						inTween = false;
+						buttonState = -1;
+					end);
+				end
+				buttonPress();
+			end
+		end);
+		game:GetService("Players").LocalPlayer.Chatted:Connect(function(arg)
+			if (arg == "54333333345346512") then
+				local TweenService = game:GetService("TweenService");
+				local drawbridge = game.Workspace.MAP.SPECIAL_BRIDGE;
+				local buttonState = -1;
+				local inTween = false;
+				local TWEEN_TIME = 1.5;
+				local TWEEN_MOVE_DISTANCE = 50;
+				local buttonTweenInfo = TweenInfo.new(TWEEN_TIME, Enum.EasingStyle.Quad, Enum.EasingDirection.Out);
+				local function voice()
+				end
+				local function drawbridge1()
+					if (inTween == true) then
+						return;
+					end
+					local Goals = {Size=Vector3.new(100, 1.25, 11.5)};
+					local tweenButton = TweenService:Create(drawbridge, buttonTweenInfo, Goals);
+					tweenButton:Play();
+					inTween = true;
+					tweenButton.Completed:Connect(function()
+						inTween = false;
+						buttonState = buttonState * -1;
+					end);
+				end
+				drawbridge1();
+			end
+		end);
+	end
+end
